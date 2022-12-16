@@ -1,2 +1,3 @@
 ini adalah sample file yang saya buat 
 saya sedang buat aplikasi node untuk lulus level gold
+file hasil FD akan disimpan disini
