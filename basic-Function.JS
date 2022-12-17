@@ -91,7 +91,14 @@ function batasUsia(umur){
 batasUsia(15); // menjalankan fungsi batasanUsia
 
 // fungsi callback
-const panggilan = (args) => { return "hallo " +  args}
-console.log(panggilan("wodire"));
+// callback
+function otherFunc() {
+    return "ini adalah fungsi pertama"
+}
+function callName(args) {
+    const result = "ini adalah fungsi ke dua dan memanggil fungsi kedua setelah koma , " + args()
+    return result
+}
 
-const panggilan2 = (panggilan("qodier")) => {return "ini adalah hasil panggilan" + panggilan2}
+const res = callName(otherFunc)
+console.log(res)
