@@ -1,0 +1,117 @@
+
+// function square(x){return x * x}
+// console.log(square(5));
+
+let x = 5;
+let y = 10;
+console.log(x+y);
+
+let a = "hello";
+let b = "world";
+let c = " ";
+console.log (a+c+b);
+
+//jika salah satu operan string makan hasilnya akan mengikuti jadi string juga
+console.log (1+2+"3");
+
+// contoh unary plus
+let e = 1;
+console.log (+e);
+let f = true;
+console.log (+f);
+let g = " ";
+console.log (+g);
+
+// cara konversi string menjadi  number (yang salah)
+let h = "1";
+let i = "2";
+console.log(h+i);
+
+// cara konversi string menjadi  number (yang benar)
+let j = "1";
+let k = "2";
+console.log(+h + +i); // hasilnya 3 bukan 12
+
+// Assigment atau deklarasi berantai
+let l, m, n ;
+l=50;
+m=40;
+n=30;
+
+console.log (l);
+console.log (m);
+console.log (n);
+
+// cara nulis perpangkatan pada javascript
+console.log (2**4);
+
+// contoh increment dan decrement
+let o = 3;
+let p = 4;
+
+console.log (++o); // hasilnya 3 jadi 4
+console.log (--p); // hasilnya 4 jadi 3
+
+// contoh Modify in place
+
+let q = 2;
+console.log(q);
+
+q = q + 5 ;
+console.log(q);
+
+q = q ** 2;
+console.log(q);
+
+// contoh operator && (AND) pada boolean 
+let hasil = true && 10 ;
+console.log (hasil);
+
+console.log(false && "hello world");
+console.log(false && "hello world");
+
+// contoh operator || (OR) pada boolean
+let hasil1 = false ||10;
+console.log(hasil1); 
+console.log (true || 10);
+console.log (false || 10);
+console.log (0 || "hello world");
+
+// contoh operator || !(NOT) pada boolean
+let hujan = true;
+if(!hujan) console.log("gausah pake payung");
+
+// contoh function
+// contoh 1
+let namaUser = "qodier";
+function sapaan (namaUser){
+    console.log("selamat datang di PT NOK " + namaUser + " mari kita mulai bekerja");
+}
+
+sapaan(namaUser);
+sapaan ("Alfa");
+
+// contoh 2
+ function diskonUltah (x){
+    let diskonUltah = (x * 30)/100
+    return diskonUltah
+ }
+
+ let sale = diskonUltah(20000)
+ console.log(sale);
+
+ // contoh function forEach
+ const strArray = ["apple" , "jambu" , 'mangga'];
+ function forEach (array, callback){
+    const newArray = [];
+    for (let i = 0; i < array.lenght; i++){
+        newArray.push(callback(array[i]));
+    }
+    return newArray;
+ }
+
+ const lenArray = forEach(strArray, (item) => {
+    return item.lenght;
+ })
+ console.log(lenArray);
+ 
