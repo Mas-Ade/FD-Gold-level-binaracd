@@ -1,0 +1,143 @@
+// catatan
+// private: gabisa dipanggil dari luar, gabisa dipanggil dari inheritance
+// public: bisa dipanggil dari luar
+// protected: gabisa dipanggil dari luar, bisa dipanggil dari inheritance
+// bisa dipanggil dari dalam class tersebut
+
+
+// // tugas
+// 1. Buat 1 class (terserah) sebagai parent
+//     class tersebut punya minimal 2 method public, 2 method protected, 1 method private
+//     class tersebut punya minimal 4 property 2 public dan 2 property protected
+
+// 2. Buat 3 class turunan dari class pertama
+//     2 method yang override method parentnya
+
+// class contohClass {
+
+// } // ini adalah contoh pembuatan class
+
+// parent class
+class Bapak {
+
+    #age
+    constructor (name, hobi){
+        this.name = name
+        this.hobi = hobi
+        this.#age = 25
+        this._phone = "08123123123"
+        this._kendaraan = "Porche"
+    }
+    // ==================================================Property=======================================================
+
+    // property public
+    getname(){
+        return this.name
+    }
+    // property public
+    getnamaPanjang(){
+       return this.name
+    }
+    // property protected
+    _setPhone (){
+        return this._phone
+    }
+    // property protected
+    _setCar (){
+        return this._kendaraan 
+    }
+    // contoh property private
+    getAge(){
+        return this.#age
+    }
+
+    //property private
+    // enkapsulasi atau private class
+    #gethobi(){
+        return this.hobi
+    }
+
+    // ==================================================Method=======================================================
+
+    getnmpanjangBapak (){
+        const namaPanjang = `nama panjang bapak ${this.getname()}` + 'Lionel Salahudin'
+        return namaPanjang
+    }
+    //contoh method private
+    #gethobiBapak (){
+        const hobiBapak = `hobi bapak  itu  ${this.#gethobi()}` //enkasulasinya #getAddress ini bisa di ambil jika masih dalam class
+        return hobiBapak
+    }
+
+    gethobiBapak2 (){
+        const hobinyaBapak = this.#gethobiBapak
+        return hobinyaBapak 
+    }
+
+    //method protected
+    _getnomorBapak(){
+        const nomor = `nomor bapak itu  ${this._setPhone()}`
+        return nomor
+    }
+
+     //method protected
+    _getkendaraanBapak(){
+        const kendaraan = `kendaraan bapak itu  ${this._setCar()}`
+        return kendaraan
+    }
+
+
+}
+
+const resFull = new Bapak(" Agoes "," Mancing "); 
+
+console.log('nama bapak itu ', resFull.getname());
+console.log(resFull.getnmpanjangBapak());
+console.log(resFull.gethobiBapak2()); 
+console.log('umur bapak itu ', resFull.getAge()); 
+console.log(resFull._getnomorBapak());
+console.log(resFull._getkendaraanBapak());
+
+// inherit -1
+class anak1 extends Bapak {
+    constructor() {
+        super("Ridho ", "Futsal")
+    }
+
+    getnamaAnak() {
+        const ubahnmBapak = `nama panjang bapak jadi ${super.getname()}`  + 'Lionel Salahudin'
+        return ubahnmBapak
+    }
+}
+
+const resFull1 = new anak1 (); 
+console.log(resFull1.getnamaAnak())
+
+// inherit -2
+class anak2 extends Bapak {
+    constructor() {
+        super("Akbar ", "Futsal")
+    }
+
+    getnamaAnak2() {
+        const ubahnmBapak2 = `nama panjang bapak jadi ${super.getname()}`  + ' Lionel Salahudin'
+        return ubahnmBapak2
+    }
+}
+
+const resFull2 = new anak2 (); 
+console.log(resFull2.getnamaAnak2())
+
+// inherit - 3
+class anak3 extends Bapak {
+    constructor() {
+        super("Qodier ", "Futsal")
+    }
+
+    getnamaAnak3() {
+        const ubahnmBapak3 = `nama panjang bapak jadi ${super.getname()}`  + ' Lionel Salahudin'
+        return ubahnmBapak3
+    }
+}
+const resFull3 = new anak3 (); 
+console.log(resFull3.getnamaAnak3())
