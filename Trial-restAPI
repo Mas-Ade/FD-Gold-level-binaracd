@@ -1,0 +1,66 @@
+/* package.json adalah file untuk setting semua js/express
+request = proses pengiriman data dari api ke localhost atau web
+response = proses pengiriman data dari browser atau localhost ke api
+
+*/
+ /* nodemon untuk auto reload after save tidak perlu mati server*/
+  /*body-parser untuk get data body dari html atau web*/
+  // terdapat function params & query
+
+const express = require('express') // variable untuk memanggil modul atau library
+const app = express() // deklarasi variable untuk penghubung ke library
+const port = 3000
+const bodyParser = require('body-parser') // merubah dan menerima data respon menjadi format json
+const database = require('./connection') // memanggil file connection.js
+const responses = require('./responses') 
+
+app.use(bodyParser.json())
+
+// rout URL atau bisa disebut endpoint
+// app.get('/', (req, res) => {
+//   database.query("SELECT * FROM tbuser", (error, result) => {
+//     // hasil dari mysql
+//     responses(200, result, 'get all data from table', res)
+//   })
+// })
+
+app.get('/database',(req,res) => {
+  const sql = "select * from tbuser"
+  database.query(sql, (error,result)=> {
+    responses(200, result, ' data berhasi ditampilkan', res)
+  })
+} )
+
+app.get('/find', (req,res) => {
+  console.log('find noreg: ' , req.query.no_registrasi)
+  const sql1 = `SELECT nama from tbuser WHERE no_registrasi = '${req.query.no_registrasi}'`
+  database.query(sql1, (error, result)=> {
+    responses(200, result , 'mencari data nama' , res)
+  })
+})
+
+app.get('/find/:id_pelanggan', (req,res) => {
+  // const id = req.params.id_pelanggan
+  const id = req.params.id_pelanggan
+  const sql2 = `SELECT * FROM tbuser where id_pelanggan = ${id}`
+  database.query(sql2, (error,result) => {
+  responses (200,'result','Berhasil terhubung',res)
+  console.log('id : ', result)
+  })
+  
+})
+
+
+
+app.post('/login',(req,res) => {
+  console.log({reqfromoutside : req.body}) // reqfromouside untuk lebih mudah tracking error
+  res.send('Login Berhasil')
+} )
+
+app.put('/username', (req,res) => {
+  console.log({updateUsername: req.body})
+} )
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
