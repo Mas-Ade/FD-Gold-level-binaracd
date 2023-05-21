@@ -100,5 +100,5 @@ function callName(args) {
     return result
 }
 
-const res = callName(otherFunc)
+const result = callName(otherFunc)
 console.log(res)
